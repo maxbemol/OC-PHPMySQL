@@ -114,13 +114,13 @@
         <p>
     
         <?php
-          //Variables part2
+          //Variables boucle
           $nombre_de_ligneW = 1;  
         ?>
             
         <?php
             echo "<strong>Boucle While:</strong> <br />";
-            while ($nombre_de_ligneW <= 25)
+            while ($nombre_de_ligneW <= 5)
             {
                 echo 'Ceci est la ligne #' . $nombre_de_ligneW . '<br />';
                 $nombre_de_ligneW ++;
@@ -130,11 +130,109 @@
             
         <?php
             echo "<strong>Boucle For:</strong><br />";
-            for ($nombre_de_ligneF = 1; $nombre_de_ligneF <=25; $nombre_de_ligneF++)
+            for ($nombre_de_ligneF = 1; $nombre_de_ligneF <=5; $nombre_de_ligneF++)
             {
                 echo 'Ceci est la ligne #' . $nombre_de_ligneF . '<br />';
             }
         ?>
+        </p>
+    
+        <h2>Tableau</h2>
+        <p>
+    
+        <?php
+          //Variable Array
+            $prenom = array ('Annie', 'Nathan', 'Ely-Ann', 'Laurence');  
+        
+        /*  $prenom[0] = 'Annie';
+            $prenom[1] = 'Nathan';
+            
+            $prenom[] = 'Annie';
+            $prenom[] = 'Nathan';
+        */
+            
+        //Array associatif
+            $coordonnee['prenom'] = 'Annie';
+            $coordonnee['nom'] = 'Gagnon';
+            $coordonnee['adresse'] = '65 Bertrand';
+            $coordonnee['ville'] = 'St-Lin';
+        ?>
+            
+        <?php
+            echo $prenom[1] . '<br />';
+            echo $coordonnee['ville'] . '<br />';
+        ?>
+            
+        <?php
+            for ($numero = 0; $numero < 6; $numero++)
+            {
+              echo $prenom[$numero] . '<br />';
+            }
+            
+            foreach($prenom as $elementP)
+            {
+                echo $elementP . '<br />';
+            }
+            
+            foreach($coordonnee as $elementC)
+            {
+                echo $elementC . '<br />';
+            }
+            
+            foreach($coordonnee as $cleC => $elementC)
+            {
+                echo '[' . $cleC . '] vaut ' . $elementC . '<br />';
+            }
+            
+            echo '<pre>';
+            print_r($coordonnee);
+            echo '</pre>';
+        ?>
+            
+        <?php
+            if(array_key_exists('nom', $coordonnee))
+            {
+                echo 'La clé "nom" existe<br />';
+            }
+            else
+            {
+                echo 'La clé "nom" n\'existe pas<br />';
+            }
+            
+            if(array_key_exists('pays', $coordonnee))
+            {
+                echo 'La clé "pays" existe<br />';
+            }
+            else
+            {
+                echo 'La clé "pays" n\'existe pas<br />';
+            }
+//-------------------------------------------------------------------            
+            if(in_array('Ely-Ann', $prenom))
+            {
+                echo 'La valeur "Ely-Ann" existe<br />';
+            }
+            else
+            {
+                echo 'La valeur "Ely-Ann" n\'existe pas<br />';
+            }
+            
+            if(in_array('Claude', $prenom))
+            {
+                echo 'La valeur "Claude" existe<br />';
+            }
+            else
+            {
+                echo 'La valeur "Claude" n\'existe pas<br />';
+            }
+//--------------------------------------------------------------------
+            $positionP = array_search('Annie', $prenom);
+            echo '"Annie" est en position: ' . $positionP . '<br />';
+            
+            $positionC = array_search('St-Lin', $coordonnee);
+            echo '"St-Lin" est en position: ' . $positionC .'<br />';
+        ?>
+            
         </p>
 </body>
 
