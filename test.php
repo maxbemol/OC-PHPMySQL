@@ -231,8 +231,44 @@
             
             $positionC = array_search('St-Lin', $coordonnee);
             echo '"St-Lin" est en position: ' . $positionC .'<br />';
+        ?>            
+        </p>
+    
+        <h2>Les Fonctions</h2>
+        <p>
+        <?php
+            $phrase = 'Allo TOUT le monde voici UN phrase avec plus de mots, encore!';
+            $longueurP = strlen($phrase);
+            echo 'La phrase ci-dessous comporte: '. $longueurP . ' caractère:<br />'. $phrase . '<br />';
+            
+            $lettre_remplacer = str_replace('e', 'Z', $phrase);
+            echo $lettre_remplacer . '<br />';
+            
+            $lettre_melanger = str_shuffle($phrase);
+            echo $lettre_melanger . '<br />';
+            
+            $lettre_minuscule = strtolower($phrase);
+            echo $lettre_minuscule . '<br />';
+            
+            $lettre_majuscule = strtoupper($phrase);
+            echo $lettre_majuscule . '<br />';
+            
+            $jour = date('d');
+            $mois = date('m');
+            $annee = date('Y');
+            $heure = date('H');
+            $minute = date('i');
+            echo 'Nous sommes le: ' . $jour . '/' . $mois . '/' . $annee . ' et il est: ' . $heure . ':' . $minute . '<br />';
+            
+            function DireBonjour($nom)
+            {
+                echo 'Bonjour ' . $nom . ' !<br />';
+            }
+            
+            DireBonjour('MaX');
         ?>
             
+    
         </p>
 </body>
 
