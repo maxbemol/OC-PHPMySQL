@@ -108,6 +108,34 @@
             ?>
             
         </p>
+    
+        <h2>Boucles</h2>
+    
+        <p>
+    
+        <?php
+          //Variables part2
+          $nombre_de_ligneW = 1;  
+        ?>
+            
+        <?php
+            echo "<strong>Boucle While:</strong> <br />";
+            while ($nombre_de_ligneW <= 25)
+            {
+                echo 'Ceci est la ligne #' . $nombre_de_ligneW . '<br />';
+                $nombre_de_ligneW ++;
+            }
+        ?>
+        <br />
+            
+        <?php
+            echo "<strong>Boucle For:</strong><br />";
+            for ($nombre_de_ligneF = 1; $nombre_de_ligneF <=25; $nombre_de_ligneF++)
+            {
+                echo 'Ceci est la ligne #' . $nombre_de_ligneF . '<br />';
+            }
+        ?>
+        </p>
 </body>
 
 </html>
