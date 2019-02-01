@@ -266,9 +266,15 @@
             }
             
             DireBonjour('MaX');
-        ?>
-            
+        ?> 
+        </p>
+    <?php
+//-----------------------------------------------------------------------
+    ?>
+        <h2> Inclusion d'autre page</h2>
     
+        <p>
+            <?php include("inclus.php"); ?>
         </p>
 </body>
 
