@@ -276,6 +276,23 @@
         <p>
             <?php include("inclus.php"); ?>
         </p>
+    
+    <?php
+//---------------------------------------------------------------------------
+    ?>
+    
+    <h2>Transmission de donnée par URL</h2>
+    
+    <?php
+    //Création de variable pour transmission URL
+    $nomURL = 'Verville';
+    $prenomURL = 'Maxime';
+    $repeteURL = 14;
+    ?>
+    
+    <p>
+        <a href="bonjour.php?nom=<?php echo $nomURL; ?>&amp;prenom=<?php echo $prenomURL; ?>&amp;repete=<?php echo $repeteURL; ?>">BONJOUR</a><br />
+    </p>
 </body>
 
 </html>
