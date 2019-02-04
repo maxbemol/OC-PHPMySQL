@@ -293,6 +293,35 @@
     <p>
         <a href="bonjour.php?nom=<?php echo $nomURL; ?>&amp;prenom=<?php echo $prenomURL; ?>&amp;repete=<?php echo $repeteURL; ?>">BONJOUR</a><br />
     </p>
+ 
+<?php
+//------------------------------------------------------------------------------    
+?>
+    
+    <h2>Transmission de donnée par formulaire</h2>
+    
+    <form method="post" action="cible.php">
+    
+    <p>
+        <input type="text" name="nomPOST" />
+        <input type="submit" value="Envoyer" />
+    </p>
+    
+    </form>
+    
+<?php
+//--------------------------------------------------------------------------------    
+?>
+    
+    <h2>Envoi d'un fichier par formulaire</h2>
+    
+    <form action="cible_envoi.php" method="post" enctype="multipart/form-data">
+        <p>Formulaire d'envoi de fichier:<br />
+        <input type="file" name="monfichier" /><br />
+        <input type="submit" value="Envoyer le fichier" />
+        </p>
+    </form>
+    
 </body>
 
 </html>
