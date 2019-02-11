@@ -328,6 +328,43 @@
     
     <h2>Session & Cookie</h2>
     
+<?php
+    /* La fonction devrais être au tout début de la page, avant le !DOCTYPE
+        Première page, on créer les variable, sur les autres, on fait juste utiliser la fonction
+        
+    session_start();
+    
+    $_SESSION['variable'] = 'valeur';
+    
+    session_destroy();
+    
+    ------------------------------------------------------------------------------
+    
+    setcookie('nom', 'valeur', time() + 365*24*3600, null, null, false, true);
+    */
+?>
+    
+<?php
+//--------------------------------------------------------------------------------    
+?>
+    
+    <h2>Lire et écrire dans un fichier</h2>
+    
+    <?php
+    $monfichier = fopen('src/compteur.txt', 'r+');
+    
+    $page_vues = fgets($monfichier);
+    $page_vues += 1;
+    fseek($monfichier, 0);
+    fputs($monfichier, $page_vues);
+    
+    fclose($monfichier);
+    
+    echo 'Cette page à été vue ' . $page_vues . ' fois !';
+    ?>
+    
+    
+    
 </body>
 
 </html>
