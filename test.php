@@ -443,6 +443,65 @@
     $reponse3->closeCursor();
 ?>
     
+<?php
+//--------------------------------------------------------------------------------    
+?>
+    
+    <h2>Insérer des entrés</h2>
+    
+    <?php
+    $nom = 'BotW';
+    $possesseur = 'Max';
+    $console = 'Switch';
+    $prix = 90;
+    $nbre_joueurs_max = 1;
+    $commentaires = '100%';
+    
+    $req1 = $bdd->prepare('INSERT INTO jeux_video(nom, possesseur, console, prix, nbre_joueurs_max, commentaires) VALUES(:nom, :possesseur, :console, :prix, :nbre_joueurs_max, :commentaires)');
+    $req1->execute(array(
+        'nom' => $nom,
+        'possesseur' => $possesseur,
+        'console' => $console,
+        'prix' => $prix,
+        'nbre_joueurs_max' => $nbre_joueurs_max,
+        'commentaires' => $commentaires
+    ));
+    ?>
+    
+<?php
+//--------------------------------------------------------------------------------    
+?>
+    
+    <h2>Update des entrés</h2>
+    
+    <?php
+    $nvprix = 91;
+    $nv_nbre_joueurs = 2;
+    $nom_jeu = 'BotW';
+    
+    $req2 = $bdd->prepare('UPDATE jeux_video SET prix = :nvprix, nbre_joueurs_max = :nv_nbre_joueurs WHERE nom = :nom_jeu');
+    $req2->execute(array(
+        'nvprix' => $nvprix,
+        'nv_nbre_joueurs' => $nv_nbre_joueurs,
+        'nom_jeu' => $nom_jeu
+        ));
+    ?>
+    
+<?php
+//--------------------------------------------------------------------------------    
+?>
+    
+    <h2>Supprimer des entrés</h2>
+    
+    <?php
+    $nom_delete = 'FIFA 64';
+    
+    $req3 = $bdd->prepare('DELETE FROM jeux_video WHERE nom = :nom_delete');
+    $req3->execute(array(
+        'nom_delete' => $nom_delete
+        ));
+    ?> 
+            
 </body>
 
 </html>
