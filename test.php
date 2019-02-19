@@ -363,7 +363,85 @@
     echo 'Cette page à été vue ' . $page_vues . ' fois !';
     ?>
     
+<?php
+//--------------------------------------------------------------------------------    
+?>
+   
+    <h2>Connection à la base de donnée</h2>
     
+<?php
+    try
+    {
+        $bdd = new PDO('mysql:host=localhost;dbname=test;charset=utf8', 'test', 'test', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+    }
+    catch (Exeption $e)
+    {
+        die('Erreur: ' . $e->getMessage());
+    }
+    
+?>
+    
+<?php
+//--------------------------------------------------------------------------------    
+?>
+    
+    <h2>Récupérer des entrés</h2>
+    
+<?php
+  $reponse = $bdd->query('SELECT * FROM jeux_video');  
+    
+    while ($donnees = $reponse->fetch())
+    {
+?>
+        <p>
+        <strong>Jeu</strong> : <?php echo $donnees['nom']; ?><br />
+        Le possesseur de ce jeu est: <?php echo $donnees['possesseur']; ?>, et il le vend à <?php echo $donnees['prix']; ?> dollards !<br />
+        Ce jeu fonctionne sur <?php echo $donnees['console']; ?> et on peut y jouer à <?php echo $donnees['nbre_joueurs_max']; ?> au maximum<br />
+        <?php echo $donnees['possesseur']; ?> a laissé ces commentaires sur <?php echo $donnees['nom']; ?>: <em><?php echo $donnees['commentaires']; ?></em>
+        </p>
+<?php
+    }
+    
+    $reponse->closeCursor();
+?>
+    
+<?php
+//--------------------------------------------------------------------------------    
+?>
+    
+<h2>Récupérer des entrés avec des critère</h2>
+    
+<?php
+  $reponse2 = $bdd->query('SELECT nom, possesseur FROM jeux_video WHERE possesseur=\'Patrick\' ORDER BY nom DESC LIMIT 0, 5');  
+    
+    while ($donnees2 = $reponse2->fetch())
+    {
+        echo $donnees2['nom'] . ' appartient à ' . $donnees2['possesseur'] . '<br />';
+    }
+    
+    $reponse2->closeCursor();
+?> 
+    
+<?php
+//--------------------------------------------------------------------------------    
+?>
+    
+<h2>Récupérer des entrés avec des variables</h2>
+    <p>Copier cet url: http://localhost/oc-phpmysql/test.php?possesseur=Florent&prix_max=20</p>
+    
+<?php
+    $reponse3 = $bdd->prepare('SELECT nom, prix FROM jeux_video WHERE possesseur = :possesseur AND prix <= :prixmax ORDER BY prix');
+    $reponse3->execute(array('possesseur' => $_GET['possesseur'], 'prixmax' => $_GET['prix_max']));
+    
+    echo '<ul>';
+    while ($donnees3 = $reponse3->fetch())
+    {
+        echo '<li>' . $donnees3['nom'] . ' (' . $donnees3['prix'] . ' dollards)</li>';
+    }
+    echo '</ul>';
+    
+    $reponse3->closeCursor();
+?>
     
 </body>
 
