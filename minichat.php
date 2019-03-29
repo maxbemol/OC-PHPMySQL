@@ -5,22 +5,12 @@
         <meta charset="utf-8" />
         <link rel="stylesheet" href="src/minichat.css" />
         <title>MiniChat</title>
+        <?php include("src/connexiondb.php"); ?>
     </head>
 
     <body>
             
-        <?php
-        //Connexion à la BD
-            try
-            {
-                $bdd = new PDO('mysql:host=localhost;dbname=test;charset=utf8', 'test', 'test', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
-            }
-            catch (Exeption $e)
-            {
-                die('Erreur: ' . $e->getMessage());
-            }    
-        ?>
-        
+                
         <form method="post" action="minichat_post.php">
             <label for="pseudo">Pseudo :</label>
             <input type="text" name="pseudo" id="pseudo" size="30" maxlenght="8" autofocus required/>

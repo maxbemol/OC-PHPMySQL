@@ -501,6 +501,61 @@
         'nom_delete' => $nom_delete
         ));
     ?> 
+    
+<?php
+//--------------------------------------------------------------------------------    
+?>
+    
+    <h2>Fonction scalaire SQL </h2>
+    
+    <?php
+        $reponseMAJ = $bdd->query('SELECT UPPER(nom) AS nom_maj FROM jeux_video');
+    
+        while ($donneesMAJ = $reponseMAJ->fetch())
+        {
+            echo $donneesMAJ['nom_maj'] . '<br />';
+        }
+    
+        $reponseMAJ->closeCursor();
+    ?>
+    
+<?php
+//--------------------------------------------------------------------------------    
+?>
+    
+    <h2>Fonction d'agrégat SQL </h2>
+    
+    <?php
+        $reponsePOSS = $bdd->query('SELECT COUNT(DISTINCT possesseur) AS nbpossesseur FROM jeux_video');
+    
+        $donneesPOSS = $reponsePOSS->fetch();
+        echo $donneesPOSS['nbpossesseur'] . '<br />';
+    
+        $reponseMAJ->closeCursor();
+    ?>
+    
+<?php
+//--------------------------------------------------------------------------------    
+?>
+    
+    <h2>GROUP BY et HAVING</h2>
+    
+    <?php
+        $reponseAVG = $bdd->query('SELECT AVG(prix) AS prix_moyen, console FROM jeux_video WHERE possesseur="Patrick" GROUP BY console HAVING prix_moyen <= 10');
+    
+        while ($donneesAVG = $reponseAVG->fetch())
+        {
+            echo $donneesAVG['prix_moyen'] . ' - ' . $donneesAVG['console'] . '<br />';
+        }
+    
+        $reponseAVG->closeCursor();
+    ?>
+    
+<?php
+//--------------------------------------------------------------------------------    
+?>
+    
+    <h2>Date en SQL</h2>
             
 </body>
 

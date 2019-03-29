@@ -10,7 +10,7 @@
             } 
 
         //Envoi des donnée du formulaire dans la BD
-        $envoi_mess = $bdd->prepare('INSERT INTO minichat(pseudo, message) VALUES(:pseudo, :message)');
+        $envoi_mess = $bdd->prepare('INSERT INTO minichat(pseudo, message, date) VALUES(:pseudo, :message, NOW())');
 
         $envoi_mess->execute(array(
             'pseudo' => $_POST['pseudo'],
